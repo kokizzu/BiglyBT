@@ -1618,7 +1618,10 @@ public class StartStopRulesDefaultPlugin implements Plugin,
 						long l1 = d1.getCoreDownloadObject().getStats().getSizeExcludingDND();
 						long l2 = d2.getCoreDownloadObject().getStats().getSizeExcludingDND();
 	
+						/* minSDK 19
 						int result = Long.compare( l2, l1 );
+						*/
+						int result = Long.valueOf(l2).compareTo(Long.valueOf(l1));
 						
 						if ( iDownloadSortType == DefaultRankCalculator.DOWNLOAD_ORDER_SIZE ){
 	
