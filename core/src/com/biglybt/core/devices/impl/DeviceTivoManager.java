@@ -370,10 +370,20 @@ DeviceTivoManager
 				if ( last_port > 0 ){
 
 					try{
+						/* try-with-resource minSDK 19
 						try( ServerSocket ss = new ServerSocket( last_port )){
 
 							ss.setReuseAddress( true );
 
+						}
+						*/
+						ServerSocket ss = new ServerSocket(last_port);
+						try {
+
+							ss.setReuseAddress(true);
+
+						} finally {
+							ss.close();
 						}
 					}catch( Throwable e ){
 

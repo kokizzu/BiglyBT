@@ -512,6 +512,7 @@ public class MessageText {
 			if (jar != null) {
 				try {
 					// System.out.println("jar: " + jar.getAbsolutePath());
+/* try-with-resource minSDK 19 
 					try (JarFile jarFile = new JarFile(jar) ){
 						Enumeration entries = jarFile.entries();
 						ArrayList<String> list = new ArrayList<>(250);
@@ -526,6 +527,25 @@ public class MessageText {
 							}
 						}
 						bundles = list.toArray(new String[0]);
+					}
+*/
+					JarFile jarFile = new JarFile(jar);
+					try {
+						Enumeration entries = jarFile.entries();
+						ArrayList list = new ArrayList(250);
+						while (entries.hasMoreElements()) {
+							JarEntry jarEntry = (JarEntry) entries.nextElement();
+							if (jarEntry.getName().startsWith(bundleFolder)
+									&& jarEntry.getName().endsWith(extension)) {
+								// System.out.println("jarEntry: " + jarEntry.getName());
+								list.add(jarEntry.getName().substring(
+										bundleFolder.length() - prefix.length()));
+								// "MessagesBundle_de_DE.properties"
+							}
+						}
+						bundles = (String[]) list.toArray(new String[list.size()]);
+					} finally {
+						jarFile.close();
 					}
 				} catch (Exception e) {
 					Debug.printStackTrace(e);
