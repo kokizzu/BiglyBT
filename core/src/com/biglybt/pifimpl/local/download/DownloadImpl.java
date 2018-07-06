@@ -992,7 +992,11 @@ DownloadImpl
 	{
 	}
 
-  @Override
+	/* Default methods minSDK 24 */
+	@Override
+	public void fileLocationChanged(DownloadManager download, com.biglybt.core.disk.DiskManagerFileInfo file) {}
+
+	@Override
   public void
   positionChanged(
   	DownloadManager download,

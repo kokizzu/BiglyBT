@@ -62,9 +62,12 @@ DownloadManagerListener
    * @param download
    * @param file	null - overall location change (e.g. move download)
    */
-  
+
+/* Default methods minSDK 24 
   default public void
   fileLocationChanged( DownloadManager download, DiskManagerFileInfo file )
   {
   }
+*/
+	public void fileLocationChanged( DownloadManager download, DiskManagerFileInfo file );
 }

@@ -1361,4 +1361,17 @@ GlobalManagerStatsImpl
 			return( stats );
 		}
 	}
+
+	/* Default methods minSDK 24 */
+	public long
+	getTotalDataProtocolBytesReceived()
+	{
+		return(getTotalDataBytesReceived()+getTotalProtocolBytesReceived());
+	}
+	/* Default methods minSDK 24 */
+	public long
+	getTotalDataProtocolBytesSent()
+	{
+		return(getTotalDataBytesSent()+getTotalProtocolBytesSent());
+	}
 }

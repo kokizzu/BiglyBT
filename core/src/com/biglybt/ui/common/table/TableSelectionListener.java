@@ -45,6 +45,9 @@ public interface TableSelectionListener
 	
 	public void focusChanged(TableRowCore focus);
 
+	public void defaultSelected(TableRowCore[] rows, int stateMask );
+	public void defaultSelected(TableRowCore[] rows, int stateMask, int orgin );
+/* Default methods minSDK 24 
 	default public void defaultSelected(TableRowCore[] rows, int stateMask )
 	{
 		Debug.out( "Implement one of the two defaultSelected methods (" + getClass()+ ")" );
@@ -54,6 +57,7 @@ public interface TableSelectionListener
 	{
 		defaultSelected( rows, stateMask );
 	}
+*/
 
 	public void mouseEnter(TableRowCore row);
 

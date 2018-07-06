@@ -39,4 +39,8 @@ public class DownloadManagerAdapter
 	public void	positionChanged(DownloadManager download, int oldPosition, int newPosition) {}
 	@Override
 	public void filePriorityChanged(DownloadManager download, DiskManagerFileInfo file ){}
+
+	/* Default methods minSDK 24 */
+	@Override
+	public void fileLocationChanged(DownloadManager download, DiskManagerFileInfo file) {}
 }

@@ -75,21 +75,27 @@ GlobalManagerStats
 
 	public long getTotalProtocolBytesReceived();
 
+/* Default methods minSDK 24 
 	public default long
 	getTotalDataProtocolBytesReceived()
 	{
 		return(getTotalDataBytesReceived()+getTotalProtocolBytesReceived());
 	}
+*/
+	public long getTotalDataProtocolBytesReceived();
 	
 	public long getTotalDataBytesSent();
 
 	public long getTotalProtocolBytesSent();
 
+/* Default methods minSDK 24 
 	public default long
 	getTotalDataProtocolBytesSent()
 	{
 		return(getTotalDataBytesSent()+getTotalProtocolBytesSent());
 	}
+*/
+	public long getTotalDataProtocolBytesSent();
 	
   	public long getTotalSwarmsPeerRate( boolean downloading, boolean seeding );
 
