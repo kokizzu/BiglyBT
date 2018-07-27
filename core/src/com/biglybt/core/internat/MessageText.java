@@ -512,7 +512,7 @@ public class MessageText {
 			if (jar != null) {
 				try {
 					// System.out.println("jar: " + jar.getAbsolutePath());
-/* try-with-resource minSDK 19 
+/* try-with-resource for JarFile/ZipFile is minSDK 19 
 					try (JarFile jarFile = new JarFile(jar) ){
 						Enumeration entries = jarFile.entries();
 						ArrayList<String> list = new ArrayList<>(250);
