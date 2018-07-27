@@ -43,13 +43,11 @@ Plugin
 
   	throws PluginException;
 
-/* Default methods minSDK 24 
   public default Properties
   getInitialProperties()
   {
 	  return( new Properties());
   }
-*/
   
   /**
    * This method is invoke by reflection, if it exists. It couldn't be added to the interface as

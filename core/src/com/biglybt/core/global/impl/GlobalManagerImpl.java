@@ -4664,10 +4664,6 @@ public class GlobalManagerImpl
 		{
 		}
 
-		/* Default methods minSDK 24 */
-		@Override
-		public void fileLocationChanged(DownloadManager download, DiskManagerFileInfo file) {}
-
 		@Override
 		public int[]
 	    getColorDefault()
