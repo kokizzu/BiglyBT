@@ -1595,7 +1595,10 @@ DHTUDPUtils
 						Long l1 = (Long)recv_cache.get(o1);
 						Long l2 = (Long)recv_cache.get(o2);
 						
+						/* minSDK 19
 						return( Long.compare( l2, l1 ));
+						*/
+						return l2.compareTo(l1);
 					}
 				});
 				
