@@ -22,7 +22,6 @@ import java.io.IOException;
 import java.net.URL;
 import java.util.*;
 import java.util.concurrent.ConcurrentHashMap;
-import java.util.concurrent.ConcurrentLinkedDeque;
 
 import com.biglybt.core.Core;
 import com.biglybt.core.CoreFactory;
@@ -43,6 +42,7 @@ import com.biglybt.core.util.SimpleTimer;
 import com.biglybt.core.util.SystemTime;
 import com.biglybt.core.util.TimerEvent;
 import com.biglybt.core.util.TimerEventPerformer;
+import com.biglybt.util.ConcurrentLinkedDeque;
 import com.biglybt.util.MapUtils;
 
 public class 
@@ -66,7 +66,7 @@ AllTrackersManagerImpl
 		return( singleton );
 	}
 	
-	private Map<String,AllTrackersTrackerImpl>		host_map = new ConcurrentHashMap<>();
+	private ConcurrentHashMap<String,AllTrackersTrackerImpl>		host_map = new ConcurrentHashMap<>();
 	
 	private ConcurrentLinkedDeque<Object[]>			update_queue = new ConcurrentLinkedDeque<>();
 	
