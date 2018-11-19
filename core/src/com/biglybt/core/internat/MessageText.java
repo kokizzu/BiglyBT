@@ -429,7 +429,14 @@ public class MessageText {
   		String		key,
 		String[] params )
   {
-  	String	res = getString(key);
+  	String	res = getString(key, (String) null);
+
+		if (res == null) {
+			if (params == null) {
+				return  "!" + key + "!";
+			}
+			return "!" + key + "(" + Arrays.toString(params) + ")" + "!";
+		}
 
   	if (params == null) {
   		return res;
