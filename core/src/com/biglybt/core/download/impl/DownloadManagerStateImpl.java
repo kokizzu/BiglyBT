@@ -548,8 +548,15 @@ DownloadManagerStateImpl
 			return;
 		}
 
+/* try-with-resource is minSDK 19 (AutoClosable introduced)
 		try( 	FileInputStream fis = new FileInputStream( file );
 				BufferedInputStream is = new BufferedInputStream( new GZIPInputStream( fis ))){
+*/
+		FileInputStream fis = null;
+		BufferedInputStream is = null;
+		try{
+			fis = new FileInputStream( file );
+			is = new BufferedInputStream( new GZIPInputStream( fis ));
 
 			try{
 
@@ -579,6 +586,21 @@ DownloadManagerStateImpl
 		}catch( Throwable e ){
 
 			Debug.printStackTrace( e );
+		} finally {
+			if (fis != null) {
+				try {
+					fis.close();
+				} catch (IOException e) {
+					Debug.printStackTrace( e );
+				}
+			}
+			if (is != null) {
+				try {
+					is.close();
+				} catch (IOException e) {
+					Debug.printStackTrace( e );
+				}
+			}
 		}
 	}
 
