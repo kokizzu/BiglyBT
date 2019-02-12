@@ -150,7 +150,7 @@ Constants
 	public static final String BIGLY_PEER_ID						= "BI";
 
 	
-	public static final String BIGLYBT_VERSION  = "2.2.0.3_CVS";
+	public static final String BIGLYBT_VERSION  = "2.2.0.3_A09";
 	
 	//public static final String BUILD_VERSION  = "@build.version@";   //Ant replace - believed dead
 	public static final String SUBVERSION		= "";
