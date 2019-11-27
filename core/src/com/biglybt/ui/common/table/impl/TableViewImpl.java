@@ -19,7 +19,9 @@
 package com.biglybt.ui.common.table.impl;
 
 import java.util.*;
+/* Removed for Android: only used in debug mode
 import java.util.stream.Collectors;
+*/
 
 import com.biglybt.core.config.impl.ConfigurationManager;
 import com.biglybt.core.logging.LogEvent;
@@ -1574,9 +1576,15 @@ public abstract class TableViewImpl<DATASOURCETYPE>
 				if (hasSortValueChanged) {
 					lLastSortedOn = SystemTime.getCurrentTime();
 					if (sortColumns.size() == 1) {
+						/* List.sort is minSDK 24
 						sortedRows.sort(sortColumns.get(0));
+						 */
+						Collections.sort(sortedRows, sortColumns.get(0));
 					} else {
+						/* List.sort is minSDK 24
 						sortedRows.sort((o1, o2) -> {
+						 */
+						Collections.sort(sortedRows, (o1, o2) -> {
 							for (TableColumnCore sortColumn : sortColumns) {
 								int compare = sortColumn.compare(o1, o2);
 								if (compare != 0) {
@@ -1596,6 +1604,7 @@ public abstract class TableViewImpl<DATASOURCETYPE>
 					}
 					
 					if (DEBUG_SORTER) {
+						/*
 						long lTimeDiff = (System.currentTimeMillis() - lTimeStart);
 						if (lTimeDiff >= 0) {
 							debug("--- Build & Sort "
@@ -1603,6 +1612,7 @@ public abstract class TableViewImpl<DATASOURCETYPE>
 											Collectors.joining(", ", "{", "}"))
 									+ " took " + lTimeDiff + "ms");
 						}
+						 */
 					}
 				} else {
 					if (DEBUG_SORTER) {
