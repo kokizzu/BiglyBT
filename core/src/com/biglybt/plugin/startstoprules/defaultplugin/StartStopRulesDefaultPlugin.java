@@ -1845,7 +1845,10 @@ public class StartStopRulesDefaultPlugin implements Plugin,
 							long	eta1 = getETA( o1 );
 							long	eta2 = getETA( o2 );
 	
+							/* minSDK 19
 							res = Long.compare( eta1,  eta2 );
+							*/
+							res = Long.valueOf(eta1).compareTo(eta2);
 						}
 						
 						if ( res == 0  ){

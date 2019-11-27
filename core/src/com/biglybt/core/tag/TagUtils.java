@@ -77,8 +77,11 @@ public class TagUtils{
 			int i1 = o1.getImageSortOrder();
 			int i2 = o2.getImageSortOrder();
 			
+/* minSDK 19
 			int result = Integer.compare( i1,  i2 );
-			
+*/
+			int result = Integer.valueOf(i1).compareTo(i2);
+
 			if ( result == 0 ){
 			
 				result = comp.compare( o1.getTagName(true), o2.getTagName(true));
