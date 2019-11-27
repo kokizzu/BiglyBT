@@ -28,8 +28,13 @@ package com.biglybt.core.stats.impl;
 import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.OutputStream;
+/* minSDK 26
 import java.time.ZoneId;
 import java.time.format.DateTimeFormatter;
+*/
+import java.util.TimeZone;
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
 import java.util.Arrays;
 import java.util.Comparator;
 import java.util.Date;
@@ -534,7 +539,13 @@ StatsWriterImpl
 	formatDate(
 		long	millis )
 	{
+		/* minSDK 26
 		return( DateTimeFormatter.ISO_LOCAL_DATE_TIME.format( new Date( millis ).toInstant().atZone( ZoneId.systemDefault())));
+		 */
+		TimeZone tz = TimeZone.getTimeZone("UTC");
+		DateFormat df = new SimpleDateFormat("yyyy-MM-dd'T'HH:mm'Z'"); // Quoted "Z" to indicate UTC, no timezone offset
+		df.setTimeZone(tz);
+		return df.format(new Date( millis ));
 	}
 	
 	protected void
