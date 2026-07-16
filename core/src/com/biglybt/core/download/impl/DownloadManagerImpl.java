@@ -141,7 +141,7 @@ DownloadManagerImpl
 	private static final int LDT_DOWNLOADCOMPLETE		= 2;
 	private static final int LDT_COMPLETIONCHANGED 		= 3;
 	private static final int LDT_POSITIONCHANGED 		= 4;
-	private static final int LDT_FILEPRIORITYCHANGED 	= 5;
+	private static final int LDT_FILEPRIORITIESCHANGED 	= 5;
 	private static final int LDT_FILELOCATIONCHANGED 	= 6;
 
 	private static Object 			port_init_lock = new Object();
@@ -176,9 +176,9 @@ DownloadManagerImpl
 
 						listener.completionChanged(dm, ((Boolean)value[1]).booleanValue());
 
-					}else if ( type == LDT_FILEPRIORITYCHANGED ){
+					}else if ( type == LDT_FILEPRIORITIESCHANGED ){
 
-						listener.filePriorityChanged(dm, (DiskManagerFileInfo)value[1]);
+						listener.filePriorityChanged(dm, (List<DiskManagerFileInfo>)value[1]);
 
 					}else if ( type == LDT_POSITIONCHANGED ){
 
@@ -222,12 +222,12 @@ DownloadManagerImpl
 			}
 
 			@Override
-			public void filePriorityChanged(DownloadManager download,
-			                                DiskManagerFileInfo file){
+			public void filePriorityChanged(DownloadManager 			download,
+			                                List<DiskManagerFileInfo>	files ){
 				for ( DownloadManagerListener listener: global_dm_listeners ){
 
 					try{
-						listener.filePriorityChanged(download, file);
+						listener.filePriorityChanged(download, files);
 					}catch( Throwable e ){
 						Debug.out( e );
 					}
@@ -4408,7 +4408,7 @@ DownloadManagerImpl
 
 	protected void 
 	informPrioritiesChange(
-		List	files )
+		List<DiskManagerFileInfo>	files )
 	{
 		calcFilePriorityStats();
 		
@@ -4417,8 +4417,7 @@ DownloadManagerImpl
 		try{
 			listeners_mon.enter();
 
-			for(int i=0;i<files.size();i++)
-				listeners.dispatch( LDT_FILEPRIORITYCHANGED, new Object[]{ this, (DiskManagerFileInfo)files.get(i) });
+			listeners.dispatch( LDT_FILEPRIORITIESCHANGED, new Object[]{ this, files });
 
 		}finally{
 

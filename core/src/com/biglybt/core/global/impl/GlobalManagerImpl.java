@@ -5627,7 +5627,7 @@ public class GlobalManagerImpl
 
 		@Override
 		public void
-		filePriorityChanged( DownloadManager download, DiskManagerFileInfo file )
+		filePriorityChanged( DownloadManager download, List<DiskManagerFileInfo> file )
 		{
 		}
 

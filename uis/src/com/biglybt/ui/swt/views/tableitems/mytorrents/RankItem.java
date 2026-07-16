@@ -493,7 +493,7 @@ public class RankItem
 					}
 					@Override
 					public void
-					filePriorityChanged( DownloadManager download, com.biglybt.core.disk.DiskManagerFileInfo file )
+					filePriorityChanged( DownloadManager download, List<com.biglybt.core.disk.DiskManagerFileInfo> file )
 					{
 					}
     		 };

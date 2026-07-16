@@ -3184,8 +3184,8 @@ public class MyTorrentsView
   @Override
   public void 
   filePriorityChanged(
-	DownloadManager 		download,
-    DiskManagerFileInfo 	file ) 
+	DownloadManager 			download,
+    List<DiskManagerFileInfo> 	changed_files ) 
   {
 	  TableRowCore row = tv.getRow( download );
 
